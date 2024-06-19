@@ -1,7 +1,8 @@
-import "./style.css";
-import * as THREE from "three";
+import "/style.css";
+import * as THREE from "three/build/three.module.js";
+
 //OrbitControls es para usar el mouse en el 3D
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 //1) La ESCENA es el contenedor de todo
 const scene = new THREE.Scene();
@@ -19,7 +20,7 @@ const renderer = new THREE.WebGLRenderer({
 //5) Setear todo segun la pantalla
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(70);
+camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
@@ -68,11 +69,11 @@ function addStar() {
 //Ahora cuantas estrellas anadimos a la escena con un array
 Array(200).fill().forEach(addStar);
 
-const spaceTexture = new THREE.TextureLoader().load("/src/img/space.jpg");
+const spaceTexture = new THREE.TextureLoader().load("/img/space.jpg");
 scene.background = spaceTexture;
 
 //Avatar
-const perfilTexture = new THREE.TextureLoader().load("/src/img/perfil.jpg");
+const perfilTexture = new THREE.TextureLoader().load("/img/perfil.jpg");
 
 const perfil = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: perfilTexture }));
 
@@ -80,8 +81,8 @@ scene.add(perfil);
 
 //Moon
 
-const moonTexture = new THREE.TextureLoader().load("/src/img/moon.jpg");
-const normalTexture = new THREE.TextureLoader().load("/src/img/normal.jpg");
+const moonTexture = new THREE.TextureLoader().load("/img/moon.jpg");
+const normalTexture = new THREE.TextureLoader().load("/img/normal.jpg");
 
 const moon = new THREE.Mesh(new THREE.SphereGeometry(3, 32, 32), new THREE.MeshStandardMaterial({ map: moonTexture, normalMap: normalTexture }));
 
